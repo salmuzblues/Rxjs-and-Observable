@@ -3,6 +3,7 @@ import {Observable} from "rxjs/Observable";
 import "rxjs/add/observable/fromEvent";
 import "rxjs/add/operator/map";
 import "rxjs/add/observable/merge";
+import "rxjs/add/observable/interval";
 
 
 @Component({
@@ -16,6 +17,18 @@ export class AppComponent implements OnInit{
   @ViewChild('btn') btn;
   @ViewChild('text') text;
   message: string;
+//this case we do not need to subscribe our variable timer, because we use Async
+  timer = Observable.interval(1000).map(event => new Date());
+  /*
+// Var
+  time: string;
+  // method
+  // .interval() => Emit numbers in sequence based on provided timeframe.
+  // .map() => Apply projection with each value from source.
+  ngOnInit() {
+    const timer  = Observable.interval(1000).map(event => new Date());
+    timer.subscribe(val => this.time = val.toString());
+  } */
 
   ngOnInit () {
 
